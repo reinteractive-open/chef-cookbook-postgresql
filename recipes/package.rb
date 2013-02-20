@@ -25,7 +25,7 @@ end
 execute "apt-get update" 
 execute "sudo apt-get install pgdg-keyring"
 
-package "postgresql-9.2"
-package "postgresql-client-9.2"
-package "postgresql-contrib-9.2"
+package "postgresql"
+package "postgresql-client"
+package "postgresql-contrib"
 package "xfsprogs"
