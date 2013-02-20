@@ -15,6 +15,7 @@ users.each do |user_bag|
     execute "create postgres user" do
       user "postgres"
       command "createuser #{uname} --createdb --echo --login --superuser --replication"
+      only_if "test -z $(psql -t -c 'select usename from pg_catalog.pg_user;'|grep #{uname})", :user => 'postgres'
     end
   end
 end
