@@ -13,7 +13,7 @@ execute "get pg key" do
   command 'wget -O - http://apt.postgresql.org/pub/repos/apt/ACCC4CF8.asc | sudo apt-key add -'
 end
 
-#TODO - fix this for correct lsb release
+#TODO - fix this for correct lsb release, or at least most applicable lts
 execute "add repository" do
   command 'echo "deb http://apt.postgresql.org/pub/repos/apt/ precise-pgdg main" > /etc/apt/sources.list.d/pgdg.list'
 end
