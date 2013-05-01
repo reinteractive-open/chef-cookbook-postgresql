@@ -8,7 +8,4 @@
 #
 include_recipe "postgresql::package_repository"
 
-package "postgresql"
-package "postgresql-client"
-package "postgresql-contrib"
-package "xfsprogs"
+package "postgresql-server-dev-all"
