@@ -17,5 +17,13 @@ users.each do |user_bag|
       command "createuser #{uname} --createdb --echo --login --superuser --replication"
       only_if "test -z $(psql -t -c 'select usename from pg_catalog.pg_user;'|grep #{uname})", :user => 'postgres'
     end
+    password = user.fetch("db_password")
+    if password
+      exec "create password for user" do
+        user "postgres"
+        command "psql -c 'alter user password \'#{password}\''"
+        only_if "test -n $(psql -t -c 'select usename from pg_catalog.pg_user;'|grep #{uname})", :user => 'postgres'
+      end
+    end
   end
 end
