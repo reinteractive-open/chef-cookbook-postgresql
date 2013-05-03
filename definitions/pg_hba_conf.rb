@@ -4,12 +4,13 @@ define :pg_hba_conf, :entries => {} do
   #TODO: um, this isn't ok, discover this not hard code it
   
   entries = params[:entries] 
+
   template "/etc/postgresql/9.2/main/pg_hba.conf" do
     source "pg_hba.conf.erb"
     owner  "postgres"
     group  "postgres"
     variables({
       :entries => entries
-    )}
+    })
   end
 end
