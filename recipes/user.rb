@@ -19,9 +19,9 @@ users.each do |user_bag|
     end
     password = user.fetch("db_password")
     if password
-      exec "create password for user" do
+      execute "create password for user" do
         user "postgres"
-        command "psql -c 'alter user password \'#{password}\''"
+        command "psql -c 'alter user #{uname} password \'#{password}\''"
         only_if "test -n $(psql -t -c 'select usename from pg_catalog.pg_user;'|grep #{uname})", :user => 'postgres'
       end
     end
